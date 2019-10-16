@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ pagedown.html_head() }}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/site_bar.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/first_block.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/category/category.css') }}">
+    <title>
+        {% block title %} {% endblock %} | Flask
+    </title>
+</head>
+<body>
+    <div class="greeting">
+        <h1><strong><i>Общеобразовательный портал "Name"</i></strong></h1>
+    </div>
+    <div class="site_bar_main">
+        <div class="site_bar">
+        <div class="nav_bar_left">  
+            <div class="cell_bar">
+                <a href="http://127.0.0.1:5000/">Главная страница</a>
+            </div>
+            <div class="cell_bar">
+                <img src="../static/images/icon/objects.png">
+                <a href="http://127.0.0.1:5000/category">Категории</a>
+            </div>
+            <div class="cell_bar">
+                <img src="../static/images/icon/communication.png">
+                <a href="http://127.0.0.1:5000/communication">Связаться с нами</a>
+            </div>
+        </div>
+        <div class="nav_bar_right">
+            <div>
+                <p></p>
+            </div>
+            <div class="cell_bar">
+                <img src="../static/images/icon/about_us.png">
+                <a href="URL">О нас</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="first_block">
+        {% block first_way %}  {% endblock %}
+    </div>
+    <content>
+        <div class="content_main">
+            <p>============================Пустой блок=====================================</p>
+        </div>
+    </content>
+
+    <footer>
+        <div class="final_information_main">
+            <div class="final_information">
+                <h1>Подвал сайта</h1>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

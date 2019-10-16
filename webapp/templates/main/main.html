@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block first_way %} 
+    <h1>Админ панель</h1>
+    <div style="margin: 0px auto;
+                display:flex;
+                flex-direction: column;
+                margin-top:15px;">
+    <div>
+        <div style="width: 1200px; border:1px solid black; flex-direction: column;" >
+            <h1>Upload Your Files</h1>
+        
+            <form action="/" method="POST" enctype="multipart/form-data">
+        
+                <label for="user_file">Upload Your File</label>
+                <br></br>
+                <input type="file" name="user_file">
+                <br></br>
+                <button type="submit">Upload</button>
+        
+            </form>
+            <br><hr>
+            {% for f in files %}
+            {{ f.key }}<form action="/delete" method="POST">
+                <input type="hidden" name="key" value="{{ f.key }}">
+                <button type="submit">Delete</button>
+              </form><form action="/download" method="POST">
+                <input type="hidden" name="key" value="{{ f.key }}">
+                <button type="submit">Download</button>
+              </form>
+              {{ f.key | file_type }}
+              {% set type_of_file = f.key | file_type %}
+              {% if type_of_file == 'video/mp4' %}
+              {% set link = f.bucket_name | create_presigned_url(f.key, '3600') %}
+              <video controls>
+                  <source src="{{ link }}" type="video/mp4"></video><br>
+              
+              {% endif %}  
+            <hr>
+            {% endfor %}
+            </div>
+    </div>
+    </div>
+
+
+{% endblock %}
