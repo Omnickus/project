@@ -21,10 +21,10 @@ def upload_file_to_s3(file, bucket_name):
                 "ContentType": file.content_type
             }
         )
-        s3 = boto3.session.Session()
-        region = s3.region_name
-        url = 'https://' + bucket_to_upload + '.s3.' + region + '.amazonaws.com/' + file.filename
-        return url                                         
+        # s3 = boto3.session.Session()
+        # region = s3.region_name
+        # url = 'https://' + bucket_to_upload + '.s3.' + region + '.amazonaws.com/' + file.filename
+        return file.filename                                     
     except Exception as e:
         # This is a catch all exception, edit this part to fit your needs.
         print("Something Happened: ", e)

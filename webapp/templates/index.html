@@ -2,41 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>title</title>
 </head>
 <body>
-    <div style="display: flex; margin:0pz auto; flex-direction: column;justify-content: space-around;" >
-    <h1>Upload Your Files</h1>
 
-    <form action="/" method="POST" enctype="multipart/form-data">
-
-        <label for="user_file">Upload Your File</label>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-warning" role="alert">
+    {% for message in messages %}
+        {{ message }}<br>
+    {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+        <p>{{results}}</p>
+    <a href='/registration_page'> Registration</a>
+    <a href="/login">Login</a>
+    <a href="{{ url_for('logout') }}"> Logout </a>
+    <h1>Categories</h1><hr>
+    <form action="/categories" method="POST">
+        <label for="category">Add a category</label>
         <br></br>
-        <input type="file" name="user_file">
+        <input type="text" name="category">
         <br></br>
-        <button type="submit">Upload</button>
-
+        <button type="submit">Add a category</button>
     </form>
     <br><hr>
-    {% for f in files %}
-    {{ f.key }}<form action="/delete" method="POST">
-        <input type="hidden" name="key" value="{{ f.key }}">
-        <button type="submit">Delete</button>
-      </form><form action="/download" method="POST">
-        <input type="hidden" name="key" value="{{ f.key }}">
-        <button type="submit">Download</button>
-      </form>
-      {{ f.key | file_type }}
-      {% set type_of_file = f.key | file_type %}
-      {% if type_of_file == 'video/mp4' %}
-      {% set link = f.bucket_name | create_presigned_url(f.key, '3600') %}
-      <video controls>
-          <source src="{{ link }}" type="video/mp4"></video><br>
-      
-      {% endif %}  
-    <hr>
+    {% for c in categories %}
+    <a href="{{ url_for('page', link_path=c.name) }}">{{ c.name }}</a><br>
+    <form action="/delete_a_category" method="POST">
+    <input type="hidden" name="category_id" value="{{ c.id }}">
+    <button type="submit">Delete</button>
+    </form>
+    <br><br>
     {% endfor %}
-    </div>
-</body>
+    <br>
 
+
+</body>
 </html>
