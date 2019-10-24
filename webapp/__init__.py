@@ -11,7 +11,7 @@ import sqlite3
 from getpass import getpass
 import sys
 
-from webapp.forms import LoginForm
+from webapp.forms import LoginForm, BooleanField
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'avi', 'mp4', 'mp3'])
@@ -58,6 +58,7 @@ def create_app():
             return None  
 
     @app.route('/delete', methods=['POST'])
+    @login_required
     def delete():
         key = (request.form['key'])
         key = key.split('*')
@@ -119,6 +120,7 @@ def create_app():
         return redirect(link)          
 
     @app.route('/download', methods=['POST'])
+    @login_required
     def download():
         key = request.form['key']
         my_bucket = get_bucket_from_s3()
@@ -131,6 +133,7 @@ def create_app():
         )
 
     @app.route('/categories', methods=['POST'])
+    @login_required
     def add_a_category():
         try:
             name = request.form['category']
@@ -144,6 +147,7 @@ def create_app():
         return redirect('/')  
 
     @app.route('/delete_a_category', methods=['POST'])
+    @login_required
     def delete_a_category():
         try:
             category_id = request.form['category_id']
@@ -289,6 +293,7 @@ def create_app():
             return render_template('error.html')   
 
     @app.route('/delete_a_course', methods=['POST'])
+    @login_required
     def delete_a_course():
         course_id = request.form['course_id']
         course_for_delete=Course.query.filter_by(id=course_id).first()
@@ -301,6 +306,7 @@ def create_app():
         return redirect('/'+category_name) 
 
     @app.route('/delete_a_lesson', methods=['POST'])
+    @login_required
     def delete_a_lesson():
         lesson_id = request.form['lesson_id']
         lesson_for_delete=Lesson.query.filter_by(id=lesson_id).first()
@@ -330,7 +336,7 @@ def create_app():
         if form.validate_on_submit():
             user = User.query.filter_by(username=form.username.data).first()
             if user and user.check_password(form.password.data):
-                login_user(user)
+                login_user(user, remember=form.remember_me.data)
                 flash('Вы вошли на сайт')
                 return redirect(url_for('index'))
         flash('Неправильное имя пользователя или пароль')
@@ -362,25 +368,19 @@ def create_app():
             if User.query.filter(User.username == username).count():
                 return 'Имя используется'
         
+        role = request.form['gender']
+
         password_1 = request.form['password_1']
         password_2 = request.form['password_2']
         if not password_1 == password_2:
             return 'Пароли не совпадают'
 
-        new_user = User(username=username, role='admin')
+        new_user = User(username=username, role= role )
         new_user.set_password(password_1)
 
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('index'))
-
-        #conn = sqlite3.connect('webapp.db')
-        #cursor = conn.cursor()
-        #cursor.execute("SELECT id,username FROM User")
-        #results = cursor.fetchall()
+        return redirect(url_for('index', role = role))
         
-        
-        
-
 
     return app
