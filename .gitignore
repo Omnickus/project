@@ -1,6 +1,6 @@
 env/
 .vscode/
-webapp/config.py
+webapp/config.py/
 webapp/__pycache__/
 .idea/
 *.db
