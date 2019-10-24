@@ -1,6 +1,0 @@
-env/
-.vscode/
-webapp/config.py/
-webapp/__pycache__/
-.idea/
-*.db
