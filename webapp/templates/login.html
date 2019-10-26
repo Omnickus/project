@@ -12,7 +12,7 @@
 
         <a href="/">Return to homepage</a>
     <div class="col-4">
-        <form action="{{ url_for('process_login') }}" method="post">
+        <form action="{{ url_for('login.process_login') }}" method="post">
             <h2>{{title}}</h2>
             {{ form.hidden_tag() }}
             <div class="form-group">

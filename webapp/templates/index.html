@@ -22,7 +22,7 @@
         <p>{{results}}</p>
     <a href='/registration_page'> Registration</a>
     <a href="/login">Login</a>
-    <a href="{{ url_for('logout') }}"> Logout </a>
+    <a href="{{ url_for('login.logout') }}"> Logout </a>
     <h1>Categories</h1><hr>
     <form action="/categories" method="POST">
         <label for="category">Add a category</label>
@@ -33,7 +33,7 @@
     </form>
     <br><hr>
     {% for c in categories %}
-    <a href="{{ url_for('page', link_path=c.name) }}">{{ c.name }}</a><br>
+    <a href="{{ url_for('category.page', link_path=c.name) }}">{{ c.name }}</a><br>
     <form action="/delete_a_category" method="POST">
     <input type="hidden" name="category_id" value="{{ c.id }}">
     <button type="submit">Delete</button>
