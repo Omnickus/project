@@ -27,7 +27,7 @@ def course_page(category_name, course_name):
                 return redirect('/' + category_name + '/' + course_name) 
             else: 
                 lessons = Lesson.query.filter(Lesson.course_id==course_exists.id).all()   
-                return render_template('course.html', category_name=category_name, course_name=course_name, lessons=lessons) 
+                return render_template('course/course.html', category_name=category_name, course_name=course_name, lessons=lessons) 
         else:
             return render_template('error.html')    
     else:

@@ -1,0 +1,15 @@
+content {
+    border:0px solid black;
+    width: 1200px;
+    margin: 0px auto;
+}
+
+
+.main_block_content {
+    margin:0px auto;
+    min-width: 480px;
+    width: 1200px;
+    border: 1px solid black;
+    height: 100px;
+}
+

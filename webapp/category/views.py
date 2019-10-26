@@ -51,6 +51,6 @@ def page(link_path):
             return redirect('/'+link_path) 
         else:
             courses = Course.query.filter(Course.category_id==category_exists.id).all()    
-            return render_template('category.html', category_name=link_path, courses=courses)  
+            return render_template('category/category.html', category_name=link_path, courses=courses)  
     else:
         return render_template('error.html')         

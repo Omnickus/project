@@ -13,7 +13,7 @@ def login():
     else:
         title = 'Authorization'
         login_form = LoginForm()
-        return render_template('login.html', form=login_form, title = title)
+        return render_template('login/login.html', form=login_form, title = title)
 
 
 @blueprint.route('/process-login', methods=['POST'])

@@ -1,0 +1,33 @@
+header {
+    border:0px solid black;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background-color: #311216;
+}
+
+header .main_block_menu a {
+    text-decoration: none;
+    font-size: 1.6em;
+    color: #FFFFFF;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 20px;
+}
+
+header .main_block_menu a:hover {
+    border-bottom: 3px solid #FFFFFF;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+.main_block_menu {
+    border: 0px solid black;
+    display: flex;
+    justify-content: space-between;
+    margin:  0px auto;
+    height: 100%;
+    align-items: center;
+    min-width:480px;
+}
