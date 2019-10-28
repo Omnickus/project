@@ -1,25 +1,32 @@
     {% extends 'base.html' %}
 
     {% block content %}
-
-    <h1>Categories</h1><hr>
-    <form action="/categories" method="POST">
-        <label for="category">Add a category</label>
-        <br></br>
-        <input type="text" name="category">
-        <br></br>
-        <button type="submit">Add a category</button>
-    </form>
+    
+    <h1 class="title_name">Categories</h1>
+    <div class="add_item">
+        <form class="add_item_form" action="/categories" method="POST">
+            <div class="add_item_label">
+            <!--<label for="category"></label>-->
+                <input type="text" name="category" placeholder="add a category..">
+            </div>
+                <button type="submit">Add a category</button>
+        </form>
+    </div>
     <br><hr>
-    {% for c in categories %}
-    <a href="{{ url_for('category.page', link_path=c.name) }}">{{ c.name }}</a><br>
-    <form action="/delete_a_category" method="POST">
-    <input type="hidden" name="category_id" value="{{ c.id }}">
-    <button type="submit">Delete</button>
-    </form>
-    <br><br>
-    {% endfor %}
-    <br>
+    <div class="block_all_items">
+        <div class="wrapper_all_items">
+            {% for c in categories %}
+                <div class="all_items">
+                    <div class="item">
+                        <a href="{{ url_for('category.page', link_path=c.name) }}">{{ c.name }}</a><br> 
+                        <form action="/delete_a_category" method="POST">
+                        <input type="hidden" name="category_id" value="{{ c.id }}">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
     {% endblock %}

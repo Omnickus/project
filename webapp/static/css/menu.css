@@ -1,27 +1,10 @@
+
 header {
     border:0px solid black;
-    height: 80px;
     display: flex;
     align-items: center;
-    background-color: #311216;
+    background-color: #214056;
 }
-
-header .main_block_menu a {
-    text-decoration: none;
-    font-size: 1.6em;
-    color: #FFFFFF;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 20px;
-}
-
-header .main_block_menu a:hover {
-    border-bottom: 3px solid #FFFFFF;
-    padding-bottom: 10px;
-    border-radius: 10px;
-}
-
-
 .main_block_menu {
     border: 0px solid black;
     display: flex;
@@ -30,4 +13,73 @@ header .main_block_menu a:hover {
     height: 100%;
     align-items: center;
     min-width:480px;
+    max-width: 1400px;
+}
+
+.block_menu {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    width: 100%;
+}
+@media screen and (max-width:700px) {
+    .block_menu {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .main_block_menu{
+        display: flex;
+        flex-direction: column;
+    }
+}
+.menu_link {
+    border:1.5px solid #DADAD4;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    margin:2px;
+    text-decoration: none;
+    font-size: 1.4em;
+    color: #DADAD4;
+}
+.menu_link:hover {
+    text-decoration: none;
+    color:#fff;
+    border:1.5px solid #fff;
+}
+
+.search_form {
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    margin-right:10px;
+}
+
+.search_box {
+    border: 1px solid #cccccc; 
+    border-radius: 3px; 
+    -webkit-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    -khtml-border-radius: 3px; 
+    background: #ffffff !important; 
+    outline: none; 
+    color: black;
+}
+
+.search_button {
+    font-size: 1.4em;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    height: 100%;
+    width:45px;
+}
+.search_img {
+    height: 100%;
+    margin-bottom: 8px;
 }

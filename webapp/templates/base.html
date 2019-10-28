@@ -25,21 +25,29 @@
 
     <header>
         <div class="main_block_menu">
-            <div style="flex-direction: row; display: flex;">
-                <a href="/"> Главное меню</a>
+            <div class="block_menu">
+                <a class="menu_link"  href="/"> Главное меню</a>
+                <a class="menu_link"  href='/registration_page'> Registration</a>
+                <a class="menu_link"  href="/login">Login</a>
+                <a class="menu_link"  href="{{ url_for('login.logout') }}"> Logout </a>
             </div>
-            <div>
-                <a href='/registration_page'> Registration</a>
-                <a href="/login">Login</a>
-                <a href="{{ url_for('login.logout') }}"> Logout </a>
+            <div class="search_block">
+                <form class="search_form">
+                    <input class="search_box" type="text" placeholder="Искать здесь...">
+                    <button class="search_button" type="submit"><img class="search_img" src='../static/images/search.PNG'> </button>
+                </form>
             </div>
         </div>
-        
     </header>
     <content>
+        <div class="main_block_content">
+    {% block content %} 
+            <h1> {% block title %} {% endblock %}  </h1>
+        </div>
 
-        {% block content %}        {% endblock %}
-
+        
+        
+    {% endblock %}
     </content>
      <footer>
 
