@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="main_block_content">
+        <div class="req_auth_center">
+            <div class="col-4">
+                <form action="{{ url_for('admin.registration') }}" method="post" class="box_shadow">
+                    {{ form.hidden_tag() }}
+                    <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username() }}
+                    </p>
+                    <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password() }}
+                    </p>
+                    <p>
+                    {{ form.password2.label }}<br>
+                    {{ form.password2() }}
+                    </p>
+                    <p>
+                    {{ form.role.label }}<br>
+                    {{ form.role() }}
+                    </p>
+                    <p>{{ form.submit }}</p>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

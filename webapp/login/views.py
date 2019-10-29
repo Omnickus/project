@@ -36,27 +36,3 @@ def logout():
     flash('Вы успешно разлогинились')
     return redirect(url_for('index'))
 
-@blueprint.route('/registration_page')
-def registration_page():
-    return render_template('registration_page.html')
-
-
-@blueprint.route('/registration', methods = ['POST', 'GET'], )
-def registration():
-    username = request.form['login']
-    role = request.form['gender']
-    if User.query.filter(User.username == username).count():
-        return 'Имя используется'
-
-    password_1 = request.form['password_1']
-    password_2 = request.form['password_2']
-    if not password_1 == password_2:
-        return 'Пароли не совпадают'
-
-    new_user = User(username=username, role= role )
-    new_user.set_password(password_1)
-
-    db.session.add(new_user)
-    db.session.commit()
-    return redirect(url_for('index', role = role))
-            

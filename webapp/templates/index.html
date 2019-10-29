@@ -17,12 +17,15 @@
         <div class="wrapper_all_items">
             {% for c in categories %}
                 <div class="all_items">
-                    <div class="item">
+                    <div class="item-1">
                         <a href="{{ url_for('category.page', link_path=c.name) }}">{{ c.name }}</a><br> 
                         <form action="/delete_a_category" method="POST">
                         <input type="hidden" name="category_id" value="{{ c.id }}">
                         <button class="btn btn-danger" type="submit">Delete</button>
                     </form>
+                    </div>
+                    <div class="item-2">
+                        <p> Свободный блок</p>
                     </div>
                 </div>
             {% endfor %}

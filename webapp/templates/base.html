@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ url_for('static' , filename='css/menu.css') }}" rel='stylesheet'>
     <link href="{{ url_for('static' , filename='css/content.css') }}" rel='stylesheet'>
+    <link href="{{ url_for('static' , filename='css/reg_auth.css') }}" rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>{{ category_name }}</title>
 </head>
@@ -27,7 +28,7 @@
         <div class="main_block_menu">
             <div class="block_menu">
                 <a class="menu_link"  href="/"> Главное меню</a>
-                <a class="menu_link"  href='/registration_page'> Registration</a>
+                <a class="menu_link"  href='/registration'> Registration</a>
                 <a class="menu_link"  href="/login">Login</a>
                 <a class="menu_link"  href="{{ url_for('login.logout') }}"> Logout </a>
             </div>

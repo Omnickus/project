@@ -128,7 +128,7 @@ def lesson_page(category_name, course_name, lesson_name):
                     for t in lesson_texts:
                         text_file = s3.ObjectSummary(my_bucket, t.name)
                         summaries.append(text_file)           
-                    return render_template('lesson.html', category_name=category_name, course_name=course_name, lesson_name=lesson_name, files=summaries)
+                    return render_template('lesson/lesson.html', category_name=category_name, course_name=course_name, lesson_name=lesson_name, files=summaries)
             else:
                 return render_template('error.html')     
         else:
