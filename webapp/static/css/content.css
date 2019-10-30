@@ -1,5 +1,9 @@
 content {
+    position: relative;
+    padding-top: 100px;
     border:0px solid black;
+    background-color: rgb(237, 229, 241);
+    z-index: 1;
 }
 
 .title_name {

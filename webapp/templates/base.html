@@ -10,39 +10,42 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>{{ category_name }}</title>
 </head>
-<body style="display: flex; flex-direction: column;">  
-
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="alert alert-warning" role="alert" style="margin: 0px;">
-        {% for message in messages %}
-            {{ message }}<br>
-        {% endfor %}
-            </div>
-        {% endif %}
-        {% endwith %}
-            <p style="margin: 0px;"> {{ role }}</p>
-            <p style="margin: 0px;">{{results}}</p>
-
+<body> 
+    <!--<div class='interlayer'></div> -->
     <header>
         <div class="main_block_menu">
             <div class="block_menu">
-                <a class="menu_link"  href="/"> Главное меню</a>
-                <a class="menu_link"  href='/registration'> Registration</a>
+                <a class="menu_link"  href="/">Главное меню</a>
+                <a class="menu_link"  href='/registration'>Registration</a>
                 <a class="menu_link"  href="/login">Login</a>
-                <a class="menu_link"  href="{{ url_for('login.logout') }}"> Logout </a>
+                <a class="menu_link"  href="{{ url_for('login.logout') }}"> Logout</a>
             </div>
             <div class="search_block">
                 <form class="search_form">
-                    <input class="search_box" type="text" placeholder="Искать здесь...">
+                    <input class="search_box" type="text" placeholder="search..">
                     <button class="search_button" type="submit"><img class="search_img" src='../static/images/search.PNG'> </button>
                 </form>
             </div>
         </div>
+        <div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-primary" role="alert" style="margin: 0px;">
+            {% for message in messages %}
+                {{ message }}<br>
+            {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
+                <p style="margin: 0px;"> {{ role }}</p>
+                <p style="margin: 0px;">{{results}}</p>
+        </div>
+        
     </header>
     <content>
         <div class="main_block_content">
-    {% block content %} 
+            {% block content %}
+     
             <h1> {% block title %} {% endblock %}  </h1>
         </div>
 
