@@ -11,7 +11,7 @@ chardet==3.0.4
 Click==7.0
 colorama==0.4.1
 cryptography==2.7
-Django==2.2.5
+Django==2.2.10
 docutils==0.15.2
 filetype==1.0.5
 Flask==1.1.1
