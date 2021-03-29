@@ -35,7 +35,7 @@ post==2019.4.13
 public==2019.4.13
 pyasn1==0.4.7
 pycparser==2.19
-Pygments==2.4.2
+Pygments==2.7.4
 pylint==2.3.1
 pyparsing==2.4.2
 PySocks==1.7.0
